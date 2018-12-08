@@ -27,17 +27,20 @@ export class AppComponent {
   ) { }
 
   ngOnInit() {
-      this.showList()
+    this.showList()
   }
 
-  showList(){
+  showList() {
     this.userService.showList().subscribe((response: any) => {
+      console.log(response)
       this.isLoading = false
-      this.data = response.data[0].results
-      this.dataSource = new MatTableDataSource(response.data[0].results)
+      this.data = response.hits
+      this.dataSource = new MatTableDataSource(response.hits)
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.sort
-  })
+    }, (err: any) => {
+      console.log(err)
+    })
   }
 
   search(filterValue) {
