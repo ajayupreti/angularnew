@@ -1,53 +1,13 @@
-<div class="m-subheader" appunwraptag="">
-  <div class="row">
-    <div class="col-sm-6 col-md-8">
-      <div class="d-flex align-items-center">
-        <div class="mr-auto">
-          <h3 class="m-subheader__title m-subheader__title--separator">
-            Company List
-          </h3>
-          <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
-            <li class="m-nav__item m-nav__item--home">
-              <a class="m-nav__link m-nav__link--icon">
-                <i class="m-nav__link-icon la la-home"></i>
-              </a>
-            </li>
-            <li class="m-nav__separator">
-              -
-            </li>
-            <li class="m-nav__item">
-              <a class="m-nav__link" [routerLink]="['/admin/dashboard']">
-                <span class="m-nav__link-text">
-                  Home
-                </span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6 col-md-4 text-right">
-      <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push pull-right"
-        data-dropdown-toggle="hover" aria-expanded="true">
-        <a title="Add Company" [routerLink]="['add']" class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--outline-2x m-btn--air m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle">
-          <i class="la la-plus"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- END: Subheader -->
-<div class="m-content">
+<div class="container">
   <div class="row mb-3">
     <div class="col-sm-12 col-md-4">
       <div class="input-group">
         <div class="m-input-icon m-input-icon--right">
-          <input (keyup)="search($event.target.value)" class="form-control m-input" placeholder="Search by Company Name"
-            type="text">
+          <input (keyup)="search($event.target.value)" class="form-control m-input" placeholder="Search by Company Name" type="text">
           <span class="m-input-icon__icon m-input-icon__icon--right">
-            <span><i class="la flaticon-search-1"></i></span>
+            <span>
+              <i class="la flaticon-search-1"></i>
+            </span>
           </span>
         </div>
       </div>
@@ -60,39 +20,34 @@
         <table class="custom-table approvedSkillTable" mat-table [dataSource]="dataSource" matSort>
           <!-- Company Column -->
           <ng-container matColumnDef="company">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header="company"> Company </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header="company"> TItle </th>
             <td mat-cell class="text-capitalize" *matCellDef="let row">
-              <a title="See Company Details" [routerLink]="['/admin/customers/detail',row?.id,'contacts']" class="capitalize">{{row?.name
-                ?
-                row?.name : 'N/A'}}</a>
+              <a title="See Company Details" [routerLink]="['/admin/customers/detail',row?.id,'contacts']" class="capitalize">{{row?.title ? row?.title : 'N/A'}}</a>
             </td>
           </ng-container>
           <!-- Name Column -->
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header="name">Contact Name </th>
-            <td mat-cell class="text-capitalize" *matCellDef="let row">{{row?.users?.firstName}}
-              {{row?.users?.lastName}}
+            <th mat-header-cell *matHeaderCellDef mat-sort-header="name">Url </th>
+            <td mat-cell class="text-capitalize" *matCellDef="let row">{{row?.url}}
             </td>
           </ng-container>
           <!-- Email Column -->
           <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef> Email </th>
-            <td mat-cell *matCellDef="let row"> {{row?.users?.email}}</td>
+            <th mat-header-cell *matHeaderCellDef> created_at </th>
+            <td mat-cell *matCellDef="let row"> {{row?.created_at}}</td>
           </ng-container>
           <!-- Sales Column -->
           <ng-container matColumnDef="sales-rep">
-            <th mat-header-cell *matHeaderCellDef> Sales Rep </th>
+            <th mat-header-cell *matHeaderCellDef> author </th>
             <td mat-cell *matCellDef="let row">
-              <a title="See SalesRep Details" [routerLink]="['/admin/sales-rep/detail',row?.salesRep?.userId]" class="capitalize">{{row?.salesRep?.user?.firstName}}
-                {{row?.salesRep?.user?.lastName}} </a>
+              {{row?.author}}
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;">
           </tr>
         </table>
-        <div class="text-center no-record p-3" *ngIf="!(data?.length>0) || !(dataSource.filteredData.length > 0)">No
-          record found</div>
+        <div class="text-center no-record p-3" *ngIf="!(data?.length>0) || !(dataSource.filteredData.length > 0)">No record found</div>
         <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
       </div>
     </div>
