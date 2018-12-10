@@ -1,0 +1,26 @@
+.approvedSkillTable tr td:nth-child(1), .approvedSkillTable tr th:nth-child(1) {
+    width: 3%;
+    word-break: break-all;
+    padding-right: 20px
+}
+
+.approvedSkillTable tr td:nth-child(2), .approvedSkillTable tr th:nth-child(2) {
+    width: 3%;
+    word-break: break-all;
+    padding-right: 20px
+}
+
+.approvedSkillTable tr td:nth-child(3), .approvedSkillTable tr th:nth-child(3) {
+    width: 1%;
+    word-break: break-all;
+}
+
+.approvedSkillTable tr td:nth-child(4), .approvedSkillTable tr th:nth-child(4) {
+    width: 1%;
+    word-break: break-all;
+    text-align: center;
+}
+
+.no-record {
+    background: #fff;
+}
