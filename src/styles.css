@@ -1,2 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body {
+    background: #eef !important
+}
+
+table.mat-table tr {
+    border-bottom: 1px dashed #eee;
+}
+
+table thead tr th:not(.alert-brand) {
+    background-color: #f1f1f1!important;
+    font-family: Poppins;
+}
+
+td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+    padding-left: 24px !important;
+}
+
+tr.mat-header-row.ng-star-inserted th {
+    padding: 10px 0;
+    color: #575962;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+    color: #575962;
+    border: none!important;
+}
+
+.mat-cell, .mat-footer-cell {
+    font-size: 13px;
+}
+
+tr.mat-header-row.ng-star-inserted th {
+    padding: 10px 0;
+}
+
+table {
+    font-family: Poppins !important;
+}
+
+table a {
+    color: #716aca !important;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.card {
+    border: none !important
+}
+
+.modal-dialog {
+    max-width: 588px !important;
+}
+
+button {
+    outline: none !important
+}

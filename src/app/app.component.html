@@ -1,9 +1,14 @@
 <div class="container">
-  <div class="row mb-3">
-    <div class="col-sm-12 col-md-4">
-      <div class="input-group">
+  <div class="row text-center">
+    <div class="col-md-12 text-center">
+      <h2 class="mb-0 mt-2 text-uppercase">Assignment</h2>
+    </div>
+  </div>
+  <div class="row my-4">
+    <div class="col-sm-12 col-md-5">
+      <div class="input-group d-block ">
         <div class="m-input-icon m-input-icon--right">
-          <input (keyup)="search($event.target.value)" class="form-control m-input" placeholder="Search by Company Name" type="text">
+          <input (keyup)="search($event.target.value)" class="form-control m-input" placeholder="Search by Title Name" type="text">
           <span class="m-input-icon__icon m-input-icon__icon--right">
             <span>
               <i class="la flaticon-search-1"></i>
@@ -15,32 +20,31 @@
   </div>
   <div class="m-portlet m-portlet--mobile">
     <div class="m-portlet__body p-0">
-      <!--begin: Datatable -->
       <div class="mat-elevation-z8">
         <table class="custom-table approvedSkillTable" mat-table [dataSource]="dataSource" matSort>
-          <!-- Company Column -->
-          <ng-container matColumnDef="company">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header="company"> TItle </th>
+          <!-- Title Column -->
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef> TItle </th>
             <td mat-cell class="text-capitalize" *matCellDef="let row">
-              <a title="See Company Details" [routerLink]="['/admin/customers/detail',row?.id,'contacts']" class="capitalize">{{row?.title ? row?.title : 'N/A'}}</a>
+              <a title="See Company Details" (click)="showDetail(row)" class="capitalize">{{row?.title ? row?.title : 'N/A'}}</a>
             </td>
           </ng-container>
-          <!-- Name Column -->
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header="name">Url </th>
-            <td mat-cell class="text-capitalize" *matCellDef="let row">{{row?.url}}
+          <!-- Url Column -->
+          <ng-container matColumnDef="url">
+            <th mat-header-cell *matHeaderCellDef>Url </th>
+            <td mat-cell class="text-capitalize" *matCellDef="let row">{{row?.url ? row?.url : '-'}}
             </td>
           </ng-container>
-          <!-- Email Column -->
-          <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef> created_at </th>
-            <td mat-cell *matCellDef="let row"> {{row?.created_at}}</td>
+          <!-- Created At Column -->
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Created At </th>
+            <td mat-cell *matCellDef="let row"> {{row?.created_at | date}}</td>
           </ng-container>
-          <!-- Sales Column -->
-          <ng-container matColumnDef="sales-rep">
+          <!-- Author Column -->
+          <ng-container matColumnDef="author">
             <th mat-header-cell *matHeaderCellDef> author </th>
             <td mat-cell *matCellDef="let row">
-              {{row?.author}}
+              <strong class="text-capitalize">{{row?.author ? row?.author : '-'}}</strong>
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -48,7 +52,7 @@
           </tr>
         </table>
         <div class="text-center no-record p-3" *ngIf="!(data?.length>0) || !(dataSource.filteredData.length > 0)">No record found</div>
-        <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
       </div>
     </div>
   </div>
